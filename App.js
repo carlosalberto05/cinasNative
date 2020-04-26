@@ -1,26 +1,27 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
-import {StyleSheet, Text} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 
 const App = () => {
   return (
     <>
-      <Text style={styles.encabezado}>Hola Mundo </Text>
+      <View style={styles.contenedor}>
+        <Text style={styles.titulo}>Administrador de Citas </Text>
+      </View>
     </>
   );
 };
 
 const styles = StyleSheet.create({
-  encabezado: {
+  contenedor: {
+    backgroundColor: '#328dd8',
+    flex: 1,
+  },
+  titulo: {
+    color: '#FFF',
+    marginTop: 40,
+    fontSize: 24,
+    fontWeight: 'bold',
     textAlign: 'center',
-    marginTop: 100,
   },
 });
 
