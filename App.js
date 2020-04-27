@@ -1,37 +1,22 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View, FlatList} from 'react-native';
-
+import Cita from './componentes/Cita';
 const App = () => {
   const [citas, setCitas] = useState([
     {id: '1', paciente: 'Mozart', propietario: 'Carlos', sintomas: 'No come'},
-    {id: '2', paciente: 'Sanson', propietario: 'Renata', sintomas: 'No duerme'},
-    {id: '3', paciente: 'Lucas', propietario: 'Erika', sintomas: 'No canta'},
+    {id: '2', paciente: 'Sanson', propietario: 'Erika', sintomas: 'No duerme'},
+    {id: '3', paciente: 'Lucas', propietario: 'Laura', sintomas: 'No camina'},
   ]);
 
   return (
     <>
       <View style={styles.contenedor}>
         <Text style={styles.titulo}>Administrador de Citas </Text>
-
         <FlatList
           data={citas}
-          renderItem={({item}) => {
-            return (
-              <View>
-                <Text>{item.paciente}</Text>
-              </View>
-            );
-          }}
+          renderItem={({item}) => <Cita item={item} />}
           keyExtractor={(cita) => cita.id}
         />
-
-        {/* {citas.map((cita) => {
-          return (
-            <View>
-              <Text>{cita.paciente}</Text>
-            </View>
-          );
-        })} */}
       </View>
     </>
   );
