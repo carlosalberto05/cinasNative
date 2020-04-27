@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View, TouchableHighlight} from 'react-native';
-const Cita = ({item}) => {
-  const dialogoEliminar = () => {
-    console.log('Eliminando ....');
+const Cita = ({item, eliminarPaciente}) => {
+  const dialogoEliminar = (id) => {
+    console.log('Eliminando ....', id);
+    eliminarPaciente(id);
   };
 
   return (
@@ -22,7 +23,7 @@ const Cita = ({item}) => {
 
       <View>
         <TouchableHighlight
-          onPress={() => dialogoEliminar()}
+          onPress={() => dialogoEliminar(item.id)}
           style={styles.btnEliminar}>
           <Text style={styles.textoEliminar}>Eliminar &times;</Text>
         </TouchableHighlight>

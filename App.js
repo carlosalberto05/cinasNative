@@ -8,13 +8,27 @@ const App = () => {
     {id: '3', paciente: 'Lucas', propietario: 'Laura', sintomas: 'No camina'},
   ]);
 
+  //Eliminar los pacientes del state
+  const eliminarPaciente = (id) => {
+    setCitas((citasActuales) => {
+      return citasActuales.filter((cita) => cita.id !== id);
+    });
+  };
+
   return (
     <>
       <View style={styles.contenedor}>
         <Text style={styles.titulo}>Administrador de Citas </Text>
+        <Text style={styles.titulo}>
+          {citas.length > 0
+            ? 'Aministra tus citas'
+            : 'No hay citas, agrega uno'}
+        </Text>
         <FlatList
           data={citas}
-          renderItem={({item}) => <Cita item={item} />}
+          renderItem={({item}) => (
+            <Cita item={item} eliminarPaciente={eliminarPaciente} />
+          )}
           keyExtractor={(cita) => cita.id}
         />
       </View>
@@ -30,6 +44,7 @@ const styles = StyleSheet.create({
   titulo: {
     color: '#FFF',
     marginTop: 40,
+    marginBottom: 20,
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
