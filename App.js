@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View, FlatList} from 'react-native';
 import Cita from './componentes/Cita';
+import Formulario from './componentes/Formulario';
 const App = () => {
   const [citas, setCitas] = useState([
     {id: '1', paciente: 'Mozart', propietario: 'Carlos', sintomas: 'No come'},
@@ -19,6 +20,9 @@ const App = () => {
     <>
       <View style={styles.contenedor}>
         <Text style={styles.titulo}>Administrador de Citas </Text>
+
+        <Formulario />
+
         <Text style={styles.titulo}>
           {citas.length > 0
             ? 'Aministra tus citas'
