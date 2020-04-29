@@ -1,7 +1,38 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, TextInput} from 'react-native';
+import {StyleSheet, Text, View, TextInput, Button} from 'react-native';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 const Formulario = () => {
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [isTimePickerVisible, setTimePickerVisibility] = useState(false);
+
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
+
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+
+  const confirmarFecha = (date) => {
+    console.warn('A date has been picked: ', date);
+    hideDatePicker();
+  };
+
+  //Muestra u oculta el Time Picker
+  const showTimePicker = () => {
+    setTimePickerVisibility(true);
+  };
+
+  const hideTimePicker = () => {
+    setTimePickerVisibility(false);
+  };
+
+  const confirmarHora = (date) => {
+    console.warn('A date has been picked: ', date);
+    hideTimePicker();
+  };
+
   return (
     <>
       <View style={styles.formulario}>
@@ -27,6 +58,26 @@ const Formulario = () => {
             style={styles.input}
             onChangeText={(texto) => console.log(texto)}
             keyboardType="number-pad"
+          />
+        </View>
+
+        <View>
+          <Button title="Seleccionar Fecha" onPress={showDatePicker} />
+          <DateTimePickerModal
+            isVisible={isDatePickerVisible}
+            mode="date"
+            onConfirm={confirmarFecha}
+            onCancel={hideDatePicker}
+          />
+        </View>
+
+        <View>
+          <Button title="Seleccionar hora" onPress={showTimePicker} />
+          <DateTimePickerModal
+            isVisible={isTimePickerVisible}
+            mode="time"
+            onConfirm={confirmarHora}
+            onCancel={hideTimePicker}
           />
         </View>
 

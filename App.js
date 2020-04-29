@@ -1,5 +1,11 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, FlatList} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  KeyboardAvoidingView,
+} from 'react-native';
 import Cita from './componentes/Cita';
 import Formulario from './componentes/Formulario';
 const App = () => {
