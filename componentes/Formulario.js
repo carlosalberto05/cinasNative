@@ -1,10 +1,21 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, TextInput, Button} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Button,
+  TouchableHighlight,
+} from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 const Formulario = () => {
+  const [paciente, setPaciente] = useState('');
+  const [propietario, setPropietario] = useState('');
+  const [telefono, setTelefono] = useState('');
   const [fecha, setFecha] = useState('');
   const [hora, setHora] = useState('');
+  const [sintomas, setSintomas] = useState('');
 
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [isTimePickerVisible, setTimePickerVisibility] = useState(false);
@@ -38,6 +49,11 @@ const Formulario = () => {
     hideTimePicker();
   };
 
+  // Crear nueva cita
+  const crearNuevaCita = () => {
+    console.log('Desde crear nueva cita');
+  };
+
   return (
     <>
       <View style={styles.formulario}>
@@ -45,7 +61,7 @@ const Formulario = () => {
           <Text style={styles.label}>Paciente: </Text>
           <TextInput
             style={styles.input}
-            onChangeText={(texto) => console.log(texto)}
+            onChangeText={(texto) => setPaciente(texto)}
           />
         </View>
 
@@ -53,7 +69,7 @@ const Formulario = () => {
           <Text style={styles.label}>Dueño: </Text>
           <TextInput
             style={styles.input}
-            onChangeText={(texto) => console.log(texto)}
+            onChangeText={(texto) => setPropietario(texto)}
           />
         </View>
 
@@ -61,7 +77,7 @@ const Formulario = () => {
           <Text style={styles.label}>Teléfono Contacto: </Text>
           <TextInput
             style={styles.input}
-            onChangeText={(texto) => console.log(texto)}
+            onChangeText={(texto) => setTelefono(texto)}
             keyboardType="number-pad"
           />
         </View>
@@ -103,8 +119,16 @@ const Formulario = () => {
           <TextInput
             multiline
             style={styles.input}
-            onChangeText={(texto) => console.log(texto)}
+            onChangeText={(texto) => setSintomas(texto)}
           />
+        </View>
+
+        <View>
+          <TouchableHighlight
+            onPress={() => crearNuevaCita()}
+            style={styles.btnEnviar}>
+            <Text style={styles.textoEnviar}>Crear Nueva Cita</Text>
+          </TouchableHighlight>
         </View>
       </View>
     </>
@@ -129,6 +153,16 @@ const styles = StyleSheet.create({
     borderColor: '#e1e1e1',
     borderWidth: 1,
     borderStyle: 'solid',
+  },
+  btnEnviar: {
+    padding: 10,
+    backgroundColor: '#328df8',
+    marginVertical: 10,
+  },
+  textoEnviar: {
+    color: '#FFF',
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
 });
 

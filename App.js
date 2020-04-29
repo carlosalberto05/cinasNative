@@ -3,6 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
+  ScrollView,
   FlatList,
   KeyboardAvoidingView,
 } from 'react-native';
@@ -24,7 +25,7 @@ const App = () => {
 
   return (
     <>
-      <View style={styles.contenedor}>
+      <ScrollView style={styles.contenedor}>
         <Text style={styles.titulo}>Administrador de Citas </Text>
 
         <Formulario />
@@ -41,7 +42,7 @@ const App = () => {
           )}
           keyExtractor={(cita) => cita.id}
         />
-      </View>
+      </ScrollView>
     </>
   );
 };
